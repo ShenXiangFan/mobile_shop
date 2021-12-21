@@ -1,14 +1,15 @@
 <template>
   <div>
-    <router-view></router-view>
+    榜单
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name:'Topic'
 }
 </script>
 
 <style>
+
 </style>
