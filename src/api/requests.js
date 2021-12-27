@@ -5,6 +5,10 @@ const requests =axios.create({
 })
 requests.interceptors.request.use(
   config=>{
+    let token =sessionStorage.getItem('token')
+    if(token){
+      config.headers['X-Nideshop-Token']=token
+    }
     return config
   }
 )

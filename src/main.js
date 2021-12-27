@@ -18,15 +18,24 @@ import * as API from '@/api/index'
 //引入全局组件
 import Production from '@/components/Production/'
 //添加全局过滤器
-Vue.filter('filterMoney',function (val) {
-  return '￥'+val.toFixed(2)+'元'
+import '@/styles/index.less'
+import Tips from '@/components/Tips/'
+import MyGoodsAction from '@/components/MyGoodsAction/'
+import { _ } from "lodash";
+Vue.filter('filterMoney', function (val) {
+  if(!val)  return ''
+  return '￥' + val.toFixed(2) + '元'
 })
-Vue.component(Production.name,Production)
+Vue.component(Production.name, Production)
+Vue.component(Tips.name, Tips)
+Vue.component(MyGoodsAction.name, MyGoodsAction)
 new Vue({
   render: h => h(App),
   router,
   store,
   beforeCreate() {
-    Vue.prototype.$API=API
+    Vue.prototype.$API = API
+    Vue.prototype.$bus = this
+    Vue.prototype._ = _;
   },
 }).$mount('#app')

@@ -2,7 +2,7 @@
   <div>
     <!-- v-for="item in popupInfo" :key="item." -->
     <ul>
-      <li v-for="item in goodsList" :key="item.id">
+      <li v-for="item in goodsList" :key="item.id" @click="goShopDetail(item.id)">
         <img :src="item.list_pic_url">
         <div class="van-ellipsis">{{item.name}}</div>
         <div class="price">{{item.retail_price | filterMoney}}</div>
@@ -15,6 +15,12 @@
 export default {
   name:'Production',
   props:['goodsList'],
+  methods:{
+    goShopDetail(value){
+      console.log('value',value)
+      this.$router.push({name:'ProductDetail',params:{goodsId:value}})
+    }
+  }
 }
 </script>
 

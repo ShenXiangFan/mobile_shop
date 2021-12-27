@@ -1,12 +1,12 @@
 <template>
   <div>
-    搜索页
+    category
   </div>
 </template>
 
 <script>
 export default {
-  name:'Search'
+  name:'Category'
 }
 </script>
 

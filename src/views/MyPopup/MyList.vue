@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-list :finished="finished" finished-text="没有更多了">
-      <van-cell v-for="(item,index) in arr" :key="index" :title="item"/>
+      <van-cell v-for="(item,index) in arr" :key="index" :title="item" @click="cellClick (item)"/>
     </van-list>
   </div>
 </template>
@@ -13,6 +13,11 @@ export default {
   data(){
     return{
       finished:true
+    }
+  },
+  methods:{
+    cellClick(item){
+      this.$emit('cellHandler',item)
     }
   },
   mounted(){

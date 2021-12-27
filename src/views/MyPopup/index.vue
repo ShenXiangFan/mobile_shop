@@ -3,8 +3,8 @@
     <!-- 弹出层页面 -->
     <form action="/">
       <van-search v-model="iptValue" show-action :placeholder="iptPlaceholder" @search="onSearch" @cancel="onCancel" @input="searchHandler"/>
-      <HistoryAndHot  v-if="blockShow === 1"   @inputDefault="getInputInfo"></HistoryAndHot>
-      <MyList v-else-if="blockShow===2" :arr="searchArr"></MyList>
+      <HistoryAndHot  v-if="blockShow === 1"   @inputDefault="getInputInfo" @tagHandler="tagHandler"></HistoryAndHot>
+      <MyList v-else-if="blockShow===2" :arr="searchArr" @cellHandler="cellHandler"></MyList>
       <MyProduct v-else :goodsList="popupInfo.goodsList" 
       :filterCategory="popupInfo.filterCategory" @categoryChange="changeCategory" @priceChange="changePrice"></MyProduct>
     </form>
@@ -75,6 +75,15 @@ export default {
       this.blockShow=2
       const result = await this.$API.reqIntimeSearchData({keyword:value})
       this.searchArr=result.data
+    },
+    tagHandler(keyword){
+      console.log(keyword)
+      this.iptValue=keyword
+      this.onSearch()
+    },
+    cellHandler(keyword){
+      this.iptValue=keyword
+      this.onSearch()
     }
   },
   computed: {

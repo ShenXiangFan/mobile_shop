@@ -3,10 +3,10 @@
     <div class="history">
       <div class="top">
         <h3>历史记录</h3>
-        <van-icon name="delete-o" />
+        <van-icon name="delete-o" @click="deleteHistory" />
       </div>
       <div class="down">
-        <van-tag plain type="default" v-for="(item,index) in historyKeywordList" :key="index">{{item}}</van-tag>
+        <van-tag plain type="default" v-for="(item,index) in historyKeywordList" :key="index" @click="tagClick(item)">{{item}}</van-tag>
       </div>
     </div>
     <div class="hot">
@@ -15,13 +15,14 @@
       </div>
       <div class="down">
         <van-tag plain  v-for="(item,index) in hotKeywordList" 
-        :key="index" :type="item.is_hot===1?'danger':'default'">{{item.keyword}}</van-tag>
+        :key="index" :type="item.is_hot===1?'danger':'default'" @click="tagClick(item.keyword)">{{item.keyword}}</van-tag>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Notify } from 'vant';
 export default {
   name: "HistoryAndHot",
   data(){
@@ -42,6 +43,16 @@ export default {
         this.hotKeywordList=result.data.hotKeywordList
         //子传递父
         this.$emit('inputDefault',result.data.defaultKeyword.keyword)
+      }
+    },
+    tagClick(keyword){
+      this.$emit('tagHandler',keyword)
+    },
+    async deleteHistory(){
+      let result = await this.$API.reqDeleteHistoryData()
+      if(result.errno===0){
+        Notify({ type: 'primary', message: '删除成功' });
+        this.getSearchBoxInfo()
       }
     }
   },

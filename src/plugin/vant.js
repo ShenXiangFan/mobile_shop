@@ -1,7 +1,9 @@
 import Vue from 'vue';
-import { Button,List,Cell,Tabbar,Tag,TabbarItem,Empty,Search,Icon,Swipe, SwipeItem,CellGroup,Field,Grid, GridItem,Image,DropdownMenu, DropdownItem} from 'vant';
+import {SwipeCell,Stepper, SubmitBar, Checkbox, CheckboxGroup, Toast, GoodsAction, Card, GoodsActionIcon, Sku, GoodsActionButton, Button, Popup, Form, List, Cell, Tabbar, Tag, TabbarItem, Empty, Search, Icon, Swipe, Col, Row, SwipeItem, CellGroup, Field, Grid, GridItem, Image, DropdownMenu, DropdownItem } from 'vant';
 
 Vue.use(Button);
+Vue.use(SwipeCell);
+Vue.use(Stepper)
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
 Vue.use(Search);
@@ -9,7 +11,6 @@ Vue.use(Icon);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(CellGroup);
-Vue.use(Field);
 Vue.use(Tag);
 Vue.use(Grid);
 Vue.use(GridItem);
@@ -19,3 +20,17 @@ Vue.use(DropdownItem);
 Vue.use(Empty);
 Vue.use(List);
 Vue.use(Cell);
+Vue.use(Toast);
+Vue.use(Col);
+Vue.use(Row);
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Popup);
+Vue.use(GoodsAction);
+Vue.use(GoodsActionButton);
+Vue.use(GoodsActionIcon);
+Vue.use(Sku);
+Vue.use(Card);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(SubmitBar);
